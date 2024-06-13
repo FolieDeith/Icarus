@@ -1,0 +1,351 @@
+body {
+    /* background-color: #F09B6F; */
+    font-family: "Yanone Kaffesatz", sans-serif;
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 1.5;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.parallax {
+    position: relative;
+    z-index: 1;
+    height: 95dvh;
+    width: 100%;
+    display: grid;
+    grid-template-areas: 
+    "stack";
+    /* background-image: url(..//imgs/background.jpg);
+    background-size: cover; */
+}
+@keyframes parallax {
+    to {
+        transform: translateY(calc(var(--parallax-speed) * 100px));
+    }
+}
+.parallax > * {
+    grid-area: stack;
+    animation: parallax linear;
+    animation-timeline: scroll(root);
+}
+
+.parallax > img {
+    width: 100%;
+    object-fit: contain;
+    overflow: hidden;
+}
+@media only screen and (min-width: 768px) {
+    .parallax-icarus, .parallax-daedalus {
+    height: 100%;
+    width: unset;
+    }
+}
+.parallax-icarus {
+    --parallax-speed: 90;
+    z-index: 7;
+    position: absolute;
+}
+.parallax-daedalus {
+    --parallax-speed: -20;
+    z-index: 1;
+    position: absolute;
+    transform: scale(0.6, 0.6);
+    left: -20%;
+    bottom: 3rem;
+}
+.parallax-background {
+    --parallax-speed: -5;
+    position: absolute;
+    z-index: 0;
+    height: 100%;
+    object-fit: cover !important;
+}
+
+.parallax-sunshine {
+    --parallax-speed: -5;
+    z-index: 1;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+/* WAVES START */
+.parallax-waves {
+    --parallax-speed: 2.5;
+    position: absolute;
+    bottom: 25px;
+    z-index: 9;
+}
+.parallax-waves-back {
+    --parallax-speed: 2;
+    z-index: 6;
+    position: absolute;
+    bottom: 50px;
+}
+.parallax-waves-border {
+    position:absolute;
+    z-index: 10;
+    bottom: -1px;
+}
+@media only screen and (min-width: 768px){
+    .parallax-waves {
+        bottom: 30px;
+    }
+    .parallax-waves-back {
+        bottom: 60px;
+    }
+}
+@media only screen and (min-width: 992px){
+    .parallax-waves {
+        bottom: 35px;
+    }
+    .parallax-waves-back {
+        bottom: 70px;
+    }
+}
+
+.parallax-waves-1920 {
+    --parallax-speed: 2.3;
+    position: absolute;
+    bottom: 35px;
+    z-index: 9;
+    display: none;
+}
+.parallax-waves-back-1920 {
+    --parallax-speed: 2;
+    z-index: 3;
+    position: absolute;
+    bottom: 70px;
+    display: none;
+}
+.parallax-waves-border-1920 {
+    --parallax-speed: 0.5;
+    position:absolute;
+    z-index: 10;
+    bottom: -5px;
+    display: none;
+}
+.border, .border-1920 {
+    position: relative;
+    top: -5px;
+    z-index: 1;
+    width: 100%;
+    object-fit: contain;
+    display: grid;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    transform: scale(-1, -1);
+}
+.border-1920 {
+    visibility: hidden;
+}
+@media only screen and (min-width: 1200px){
+    .parallax-waves, .parallax-waves-back, .parallax-waves-border, .border {
+        display: none;
+    }
+    .parallax-waves-1920, .parallax-waves-border-1920, .parallax-waves-back-1920, .border-1920 {
+        display: block;
+        visibility: inherit;
+    }
+}
+/* WAVES END */
+
+.main {
+    background-color: #F09B6F;
+    display: grid;
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 3rem 2rem 3rem 2rem;
+    width: 100%;
+}
+
+.main p {
+    margin-top: 10px;
+}
+
+.fade-text > * {
+    display: flex;
+    min-height: 90vh;
+}
+.fade-text > div {
+    justify-content: center;
+    min-width: fit-content;
+    color: azure;
+}
+.fade-text > div > * {
+    display: flex;
+    flex-wrap: wrap;
+    align-self: center;
+    text-align: center;
+}
+.fade-text > div:nth-child(odd) {
+    animation: text-left linear forwards,
+    fade-text linear forwards;
+    animation-timeline: view();
+    animation-range: entry;
+    /* padding-right: 25%; */
+}
+/* .fade-text > div:nth-child(odd) > * {
+    text-align:;
+}
+.fade-text > div:nth-child(even) > * {
+    text-align: end;
+} */
+.fade-text > div:nth-child(even) {
+    animation: text-right linear forwards,
+    fade-text linear forwards;
+    animation-timeline: view();
+    animation-range: entry;
+    /* padding-left: 25%; */
+}
+@keyframes text-left {
+    from {transform: translateX(-100%);}
+    to {transform: translateX(0);}
+}
+@keyframes text-right {
+    from {transform: translateX(100%);}
+    to {transform: translateX(0%);}
+}
+@keyframes fade-text {
+    from {
+        opacity: 0;
+        filter: blur(5px);
+    }
+    to {
+        opacity: 1;
+        filter: blur(0);
+    }
+}
+.hero {
+    color: azure;
+    height: 5dvh;
+}
+.name-info {
+    /* height: 95dvh; */
+    display: grid;
+    position: relative;
+    z-index: 1;
+    background-image: linear-gradient(13deg, rgba(2,35,242,1) 0%, rgba(253,251,45,1) 27%, rgba(253,187,45,1) 100%);
+    background-size: 300%;
+    animation: gradient-waves ease 10s infinite;
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: 100px 1fr 400px 400px;
+    font-size: 1.5rem;
+ 
+}
+@keyframes gradient-waves {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.name-info-icarus {
+    position: absolute;
+    /* top: 100px; */
+    object-fit: contain;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    transform: translateY(-300px);
+    animation: move-down linear forwards;
+    animation-timeline: view();
+    animation-range: entry -10px;
+}
+@keyframes move-down {
+    to {transform: translateY(100px)}
+}
+@media only screen and (min-width: 540px) {
+    @keyframes move-down {
+        to {transform: translateY(200px)}
+    }
+}
+
+.question {
+    display: grid;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    grid-row-end: 2;
+    position: relative;
+    margin-top: 7rem;
+    margin-left: 5%;
+    padding: 10px;
+    text-align: center;
+    flex-wrap: nowrap;
+    height: fit-content;
+    min-width: fit-content;
+}
+.answer {
+    display: grid;
+    grid-row-start: 4;
+    grid-row-end: 5;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    position: absolute;
+    bottom: 0px;
+    text-align: center;
+    justify-self: center;
+    align-self: flex-start;
+    height: fit-content;
+    padding: 10px 2.5rem 10px 2.5rem;
+    margin-bottom: 50px;
+    /* font-size: 1.5rem; */
+}
+@media only screen and (min-width: 768px) {
+    .question {
+    grid-column-end: 2;
+    grid-row-end: 3;
+    }
+    .answer {
+    grid-row-start: 4;
+    grid-row-end: 4;
+    grid-column-start: 3;
+    grid-column-end: 4;
+    position: relative;
+    }
+}
+.bonus {
+    display: flex;
+    padding-top: 50px;
+    min-height: 30dvh;
+    min-width: 100%;
+    overflow: auto;
+    position: relative;
+    z-index: 1;
+    background-image: linear-gradient(175deg, rgba(2,35,242,1) 0%, rgba(253,251,45,1) 35%, rgb(252, 195, 72) 100%);
+    background-size: 300%;
+    animation: gradient-waves ease 10s infinite;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+.bonus::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    z-index: -1;
+    display: block;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(5px);
+}
+.bonus > p {
+    padding: 3rem;
+    font-size: 1.5rem;
+}
+.italic {
+    font-style: italic;
+}
